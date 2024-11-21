@@ -5,8 +5,15 @@ import * as enrollmentsDao from "../Enrollments/dao.js";
 export default function UserRoutes(app) {
   const createUser = (req, res) => { };
   const deleteUser = (req, res) => { };
-  const findAllUsers = (req, res) => { };
-  const findUserById = (req, res) => { };
+  const findAllUsers = (req, res) => {
+    const users = dao.findAllUsers();
+    res.json(users);
+  };
+  const findUserById = (req, res) => {
+    const {userId} = req.params;
+    const user = dao.findUserById(userId);
+    res.json(user);
+  };
   const updateUser = (req, res) => {
     const userId = req.params.userId;
     const userUpdates = req.body;
