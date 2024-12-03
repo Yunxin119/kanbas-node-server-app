@@ -25,6 +25,12 @@ export function updateCourse(courseId, courseUpdates) {
 export function getAllCourses() {
     return Database.courses;
 }
+
+export function deleteCourse(courseId) {
+    const { courses } = Database;
+    Database.courses = courses.filter((course) => course._id !== courseId);
+    return Database.courses;
+}
   
   
   
