@@ -31,10 +31,18 @@ if (process.env.NODE_ENV !== "development") {
     sameSite: "none",
     secure: true,
     domain: process.env.NODE_SERVER_DOMAIN,
+  } 
+} else {
+  sessionOptions.cookie = {
+    sameSite: 'lax',
+    secure: false,
   };
 }
 app.use(session(sessionOptions));
 
+if (process.env.NODE_ENV !== "development") {
+  app.set("trust proxy", 1);
+}
    
 app.use(express.json());
 app.use(express.json());
